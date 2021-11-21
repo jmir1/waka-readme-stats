@@ -27,10 +27,16 @@ class LinesOfCode:
     def calculateLoc(self):
         result = self.repositoryData
         yearly_data = {}
-        for repo in result['data']['user']['repositories']['edges']:
-            if repo['node']['name'] not in self.ignored_repos:
-                self.getCommitStat(repo['node'], yearly_data)
-                time.sleep(0.7)
+        if result['data']['user']['repositories'] is None:
+            for repo in result['data']['user']['repositoriesContributedTo']['edges']:
+                if repo['node']['name'] not in self.ignored_repos:
+                    self.getCommitStat(repo['node'], yearly_data)
+                    time.sleep(0.7)
+        else:
+            for repo in result['data']['user']['repositories']['edges']:
+                if repo['node']['name'] not in self.ignored_repos:
+                    self.getCommitStat(repo['node'], yearly_data)
+                    time.sleep(0.7)
         return yearly_data
 
     def plotLoc(self, yearly_data):
