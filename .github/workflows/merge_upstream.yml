@@ -12,5 +12,4 @@ jobs:
       - uses: rekgrpth/git-clone-shell-action@v1
       - env:
           INPUTS_REPOSITORY: anol098/waka-readme-stats
-          INPUTS_URL: https://github.com
         uses: rekgrpth/git-fetch-upstream-merge-push-shell-action@v1
