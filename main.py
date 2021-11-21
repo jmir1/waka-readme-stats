@@ -358,7 +358,7 @@ def get_waka_time_stats():
 def generate_language_per_repo(result):
     language_count = {}
     total = 0
-    for repo in result['data']['user']['repositories']['edges']:
+    for repo in result['data']['user']['repositoriesContributedTo']['edges']:
         if repo['node']['primaryLanguage'] is None:
             continue
         language = repo['node']['primaryLanguage']['name']
